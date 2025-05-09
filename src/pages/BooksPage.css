@@ -37,3 +37,10 @@
   line-height: 1.6;
   margin-bottom: 8px;
 }
+.book-cover {
+  width: 100%;
+  max-height: 300px;
+  object-fit: cover;
+  border-radius: 8px;
+  margin: 1rem 0;
+}

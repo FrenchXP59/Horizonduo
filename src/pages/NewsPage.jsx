@@ -25,7 +25,6 @@ export default function NewsPage() {
           match[1].split(/\r?\n/).forEach((line) => {
             const [k, ...v] = line.split(":");
             let value = v.join(":").trim();
-            // Retirer guillemets autour
             if (value.startsWith('"') && value.endsWith('"')) {
               value = value.slice(1, -1);
             }
@@ -52,16 +51,14 @@ export default function NewsPage() {
     : articles;
 
   return (
-    <div className="news-container">
+      <div className="news-container min-h-screen p-8 bg-actualites">
       <BackButton />
       <h1 className="news-title">Actualités</h1>
 
-      {/* Affiche la grille uniquement si aucune sous-catégorie n'est sélectionnée */}
       {!subcategory && (
         <SubCategoryGrid categories={subcategories} basePath="/news" />
       )}
 
-      {/* Si sous-catégorie définie, afficher les articles filtrés */}
       {subcategory && (
         filtered.length === 0 ? (
           <p>Aucun article pour cette sous-catégorie.</p>
@@ -70,6 +67,13 @@ export default function NewsPage() {
             <article key={i} className="news-article">
               <h2 className="news-article-title">{meta.title}</h2>
               <time className="news-article-date">{meta.date}</time>
+              {meta.cover && (
+                <img
+                  src={meta.cover}
+                  alt={meta.title}
+                  className="news-article-cover"
+                />
+              )}
               <ReactMarkdown>{content}</ReactMarkdown>
             </article>
           ))

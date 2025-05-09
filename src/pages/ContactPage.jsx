@@ -47,7 +47,7 @@ export default function ContactPage() {
     : null;
 
   return (
-    <div className="contact-container min-h-screen p-8 bg-gray-50">
+    <div className="contact-container min-h-screen p-8 bg-contact">
       <BackButton />
       <h1 className="text-4xl mb-6">Contact</h1>
 

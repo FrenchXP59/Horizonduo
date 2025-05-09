@@ -51,7 +51,7 @@ export default function GamesPage() {
     : [];
 
   return (
-    <div className="games-container min-h-screen p-8 bg-gray-50">
+    <div className="games-container min-h-screen p-8 bg-jeux">
       <BackButton />
       <h1 className="text-4xl mb-8">Jeux &amp; Découvertes</h1>
 

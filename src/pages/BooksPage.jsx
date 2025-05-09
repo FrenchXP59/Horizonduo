@@ -6,6 +6,21 @@ import BackButton from "../components/BackButton";
 import SubCategoryGrid from "../components/SubCategoryGrid";
 import "./BooksPage.css";
 
+// Rend les liens Markdown : seuls ceux vers Amazon s’ouvrent en new-tab
+function LinkRenderer({ href, children }) {
+  const isAmazon = href.includes("amazon");
+  return (
+    <a
+      href={href}
+      {...(isAmazon
+        ? { target: "_blank", rel: "noopener noreferrer" }
+        : {})}
+    >
+      {children}
+    </a>
+  );
+}
+
 export default function BooksPage() {
   const [items, setItems] = useState([]);
   const { subcategory } = useParams();
@@ -37,27 +52,30 @@ export default function BooksPage() {
     });
   }, []);
 
+  // Ajout de la 4ᵉ sous-catégorie "Livres"
   const subcategories = [
-    { key: "ebooks",    label: "Ebooks & guides pratiques", icon: "books-ebooks.webp" },
-    { key: "notebooks", label: "Carnets de notes",         icon: "books-notebooks.webp" },
-    { key: "travels",   label: "Carnets de voyage",        icon: "books-travels-journals.webp" },
+    { key: "ebooks",    label: "Ebooks & guides pratiques",         icon: "books-ebooks.webp" },
+    { key: "notebooks", label: "Carnets de notes",                  icon: "books-notebooks.webp" },
+    { key: "travels",   label: "Carnets de voyage",                 icon: "books-travels-journals.webp" },
+    { key: "livres",    label: "Livres – publications papier & récits", icon: "books-livre.webp" },
   ];
 
+  // Si une sous-catégorie est sélectionnée, on filtre ; sinon on n’affiche rien
   const filtered = subcategory
     ? items.filter(({ meta }) => meta.subcategory === subcategory)
     : [];
 
   return (
-    <div className="books-container min-h-screen p-8 bg-gray-50">
+    <div className="books-container min-h-screen p-8 bg-livres">
       <BackButton />
       <h1 className="text-4xl mb-8">Livres &amp; Carnets</h1>
 
-      {/* Affiche la grille si PAS de sous-catégorie sélectionnée */}
+      {/* Affiche la grille si aucune sous-catégorie n’est sélectionnée */}
       {!subcategory && (
         <SubCategoryGrid categories={subcategories} basePath="/books" />
       )}
 
-      {/* Si une sous-catégorie est sélectionnée, affiche les contenus */}
+      {/* Si sous-catégorie sélectionnée, on affiche les articles */}
       {subcategory && (
         <>
           {filtered.length === 0 ? (
@@ -66,8 +84,22 @@ export default function BooksPage() {
             filtered.map(({ meta, content }, i) => (
               <article key={i} className="books-article prose max-w-none my-8">
                 <h2>{meta.title}</h2>
-                <time className="block mb-4 text-sm text-gray-500">{meta.date}</time>
-                <ReactMarkdown>{content}</ReactMarkdown>
+                <time className="block mb-4 text-sm text-gray-500">
+                  {meta.date}
+                </time>
+
+                {/* Affiche la couverture si présente */}
+                {meta.cover && (
+                  <img
+                    src={meta.cover}
+                    alt={meta.title}
+                    className="book-cover mb-4"
+                  />
+                )}
+
+                <ReactMarkdown components={{ a: LinkRenderer }}>
+                  {content}
+                </ReactMarkdown>
               </article>
             ))
           )}

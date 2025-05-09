@@ -14,25 +14,28 @@ import ContactPage from "./pages/ContactPage";
 export default function App() {
   return (
     <BrowserRouter>
-      <Routes>
-        {/* Écran d'accueil */}
-        <Route path="/" element={<Welcome />} />
++     {/* wrapper global pour police et dégradé */}
++     <div className="min-h-screen font-sans bg-accueil">
+        <Routes>
+          {/* Écran d'accueil */}
+          <Route path="/" element={<Welcome />} />
 
-        {/* Page principale */}
-        <Route path="/home" element={<HomePage />} />
+          {/* Page principale */}
+          <Route path="/home" element={<HomePage />} />
 
-        {/* Pages section */}
-        <Route path="/news/:subcategory?"   element={<NewsPage />} />
-        <Route path="/books/:subcategory?"  element={<BooksPage />} />
-        <Route path="/services/:subcategory?" element={<ServicesPage />} />
-        <Route path="/games/:subcategory?" element={<GamesPage />} />
-        <Route path="/partners/:subcategory?" element={<PartnersPage />} />    {/* bien fermé */}
-        <Route path="/contact/:subcategory?" element={<ContactPage />} />      {/* bien fermé */}
+          {/* Pages section */}
+          <Route path="/news/:subcategory?"   element={<NewsPage />} />
+          <Route path="/books/:subcategory?"  element={<BooksPage />} />
+          <Route path="/services/:subcategory?" element={<ServicesPage />} />
+          <Route path="/games/:subcategory?" element={<GamesPage />} />
+          <Route path="/partners/:subcategory?" element={<PartnersPage />} />
+          <Route path="/contact/:subcategory?" element={<ContactPage />} />
 
-        {/* Redirections */}
-        <Route path="/index.html" element={<Navigate to="/" replace />} />
-        <Route path="*"          element={<Navigate to="/" replace />} />
-      </Routes>
+          {/* Redirections */}
+          <Route path="/index.html" element={<Navigate to="/" replace />} />
+          <Route path="*"          element={<Navigate to="/" replace />} />
+        </Routes>
++     </div>
     </BrowserRouter>
   );
 }

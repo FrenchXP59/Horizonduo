@@ -14,7 +14,7 @@ export default function HomePage() {
   ];
 
   return (
-    <div className="min-h-screen p-8 bg-[linear-gradient(to_bottom,#eaf7ff,#cce3f4)]">
+      <div className="min-h-screen p-8 bg-accueil">
       <h1 className="text-5xl font-semibold font-sans text-center mb-12 animate-fade-in">
         Horizon Duo
       </h1>
