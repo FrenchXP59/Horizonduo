@@ -1,0 +1,17 @@
+/* src/pages/ContactPage.css */
+
+.contact-container {
+  max-width: 768px;
+  margin: 0 auto;
+  padding: 16px;
+}
+
+.contact-article {
+  margin-top: 2rem;
+}
+
+/* Optionnel : styliser la grille d’icônes */
+.contact-container .grid a {
+  text-decoration: none;
+  color: inherit;
+}

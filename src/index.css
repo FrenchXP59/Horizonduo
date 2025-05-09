@@ -1,0 +1,8 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Application de la police et du dégradé global */
+body {
+  @apply font-sans bg-marine-gradient;
+}

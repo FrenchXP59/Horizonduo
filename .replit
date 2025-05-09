@@ -1,19 +1,14 @@
-run = "npm run dev"
+language = "nodejs"
+run = "NODE_OPTIONS=--openssl-legacy-provider npm start"
 modules = ["nodejs-20"]
-hidden = [".config", "package-lock.json"]
-entrypoint = "index.html"
 
 [nix]
 channel = "stable-24_05"
 
-[unitTest]
-language = "nodejs"
-
-[deployment]
-deploymentTarget = "static"
-build = ["npm", "run", "build"]
-publicDir = "dist"
+[[ports]]
+localPort = 3000
+externalPort = 80
 
 [[ports]]
-localPort = 5173
-externalPort = 80
+localPort = 3001
+externalPort = 3001

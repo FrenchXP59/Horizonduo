@@ -1,0 +1,35 @@
+.subcat-container {
+  text-align: center;
+  margin-bottom: 24px;
+}
+.subcat-grid {
+  display: grid;
+  grid-template-columns: repeat(1, 1fr);
+  gap: 16px;
+  justify-items: center;
+}
+@media (min-width: 640px) {
+  .subcat-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+.subcat-card {
+  max-width: 100px;
+  text-align: center;
+  padding: 8px;
+  background: white;
+  border-radius: 8px;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+  transition: box-shadow .2s;
+}
+.subcat-card:hover {
+  box-shadow: 0 4px 6px rgba(0,0,0,0.15);
+}
+.subcat-icon {
+  display: block;
+  margin: 0 auto 8px;
+}
+.subcat-label {
+  font-size: 0.75rem;
+  display: block;
+}

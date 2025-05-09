@@ -1,0 +1,29 @@
+/* ServicesPage.css */
+.services-container {
+  max-width: 768px;
+  margin: 0 auto;
+  padding: 16px;
+}
+
+.services-article {
+  margin-bottom: 32px;
+  padding-bottom: 16px;
+  border-bottom: 1px solid #e5e7eb;
+}
+
+.services-article h2 {
+  font-size: 1.25rem;
+  margin-bottom: 4px;
+}
+
+.services-article time {
+  display: block;
+  font-size: 0.75rem;
+  color: #6b7280;
+  margin-bottom: 12px;
+}
+
+.services-article p {
+  line-height: 1.6;
+  margin-bottom: 8px;
+}

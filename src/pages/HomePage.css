@@ -1,0 +1,62 @@
+/* Container centré + padding */
+.homepage-container {
+  max-width: 768px;
+  margin: 0 auto;
+  padding: 16px;
+}
+
+/* Titre centré */
+.homepage-title {
+  text-align: center;
+  font-size: 1.75rem;
+  margin-bottom: 24px;
+  font-weight: bold;
+}
+
+/* Grille responsive : 1-2-3 colonnes */
+.homepage-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 16px;
+  justify-items: center;
+}
+
+@media (min-width: 640px) {
+  .homepage-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 24px;
+  }
+}
+
+@media (min-width: 1024px) {
+  .homepage-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+/* Carte : largeur fixe pour contenir l’icône */
+.homepage-card {
+  max-width: 100px;
+  text-align: center;
+  background: white;
+  border-radius: 8px;
+  padding: 8px;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+  transition: box-shadow .2s;
+}
+.homepage-card:hover {
+  box-shadow: 0 4px 6px rgba(0,0,0,0.15);
+}
+
+/* Icône 80×80px */
+.homepage-icon {
+  width: 80px;
+  height: 80px;
+  object-fit: contain;
+  margin-bottom: 8px;
+}
+
+/* Label sous icône */
+.homepage-label {
+  font-size: 0.75rem;
+}

@@ -1,0 +1,39 @@
+/* src/pages/BooksPage.css */
+
+/* Container et retour */
+.books-container {
+  max-width: 768px;
+  margin: 0 auto;
+  padding: 16px;
+}
+
+/* Titre principal */
+.books-title {
+  font-size: 1.75rem;
+  font-weight: bold;
+  margin-bottom: 16px;
+}
+
+/* Article individuel */
+.books-article {
+  margin-bottom: 32px;
+  padding-bottom: 16px;
+  border-bottom: 1px solid #e5e7eb;
+}
+
+.books-article h2 {
+  font-size: 1.25rem;
+  margin-bottom: 4px;
+}
+
+.books-article time {
+  display: block;
+  font-size: 0.75rem;
+  color: #6b7280;
+  margin-bottom: 12px;
+}
+
+.books-article p {
+  line-height: 1.6;
+  margin-bottom: 8px;
+}

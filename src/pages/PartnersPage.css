@@ -1,0 +1,49 @@
+/* src/pages/PartnersPage.css */
+
+/* Container principal */
+.partners-container {
+max-width: 800px;
+margin: 0 auto;
+padding: 16px;
+}
+
+/* Titre principal de la page */
+.partners-container > h1 {
+font-size: 2rem;
+font-weight: 700;
+margin-bottom: 24px;
+}
+
+/* Grille des sous-catégories /
+/ Utilise Tailwind pour la grille, pas de règles CSS ici */
+
+/* Article de partner individuel */
+.partners-article {
+margin-bottom: 40px;
+padding-bottom: 24px;
+border-bottom: 1px solid #e5e7eb;
+}
+
+.partners-article h2 {
+font-size: 1.5rem;
+margin-bottom: 8px;
+}
+
+.partners-article time {
+display: block;
+font-size: 0.875rem;
+color: #6b7280;
+margin-bottom: 12px;
+}
+
+.partners-article a {
+color: #3b82f6;
+text-decoration: underline;
+margin-bottom: 16px;
+display: inline-block;
+}
+
+.partners-article p {
+line-height: 1.6;
+margin-bottom: 12px;
+}
