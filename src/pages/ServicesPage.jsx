@@ -40,7 +40,7 @@ export default function ServicesPage() {
     { key: "cv",
       label: "Rédaction de CV",
       icon: "services-cv.webp" },
-    { key: "memoire",
+    { key: "dissertation",
       label: "Aide à la rédaction de mémoires",
       icon: "services-dissertation.webp" },
     { key: "job-interview-visio",
