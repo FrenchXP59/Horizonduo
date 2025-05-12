@@ -2,6 +2,10 @@
 import React, { useState, useEffect } from "react";
 import ReactMarkdown from "react-markdown";
 import { useParams } from "react-router-dom";
+import Slider from "react-slick";                         // ← import du carrousel
+import "slick-carousel/slick/slick.css";                  // ← styles de base
+import "slick-carousel/slick/slick-theme.css";            // ← thème (arrows, dots)
+
 import BackButton from "../components/BackButton";
 import SubCategoryGrid from "../components/SubCategoryGrid";
 import "./BooksPage.css";
@@ -52,56 +56,71 @@ export default function BooksPage() {
     });
   }, []);
 
-  // Ajout de la 4ᵉ sous-catégorie "Livres"
+  // Sous-catégories
   const subcategories = [
-    { key: "ebooks",    label: "Ebooks & guides pratiques",         icon: "books-ebooks.webp" },
-    { key: "notebooks", label: "Carnets de notes",                  icon: "books-notebooks.webp" },
-    { key: "travels",   label: "Carnets de voyage",                 icon: "books-travels-journals.webp" },
+    { key: "ebooks",    label: "Ebooks & guides pratiques",           icon: "books-ebooks.webp" },
+    { key: "notebooks", label: "Carnets de notes",                    icon: "books-notebooks.webp" },
+    { key: "travels",   label: "Carnets de voyage",                   icon: "books-travels-journals.webp" },
     { key: "livres",    label: "Livres – publications papier & récits", icon: "books-livre.webp" },
   ];
 
-  // Si une sous-catégorie est sélectionnée, on filtre ; sinon on n’affiche rien
   const filtered = subcategory
     ? items.filter(({ meta }) => meta.subcategory === subcategory)
     : [];
+
+  // Configuration du slider
+  const settings = {
+    dots: true,
+    infinite: false,
+    speed: 500,
+    slidesToShow: 1,
+    slidesToScroll: 1,
+    appendDots: (dots) => (
+      <div>
+        <ul className="custom-dots flex gap-2 justify-center mt-4">{dots}</ul>
+      </div>
+    ),
+    customPaging: () => (
+      <div className="w-2 h-2 bg-gray-300 rounded-full"></div>
+    ),
+  };
 
   return (
     <div className="books-container min-h-screen p-8 bg-livres">
       <BackButton />
       <h1 className="text-4xl mb-8">Livres &amp; Carnets</h1>
 
-      {/* Affiche la grille si aucune sous-catégorie n’est sélectionnée */}
       {!subcategory && (
         <SubCategoryGrid categories={subcategories} basePath="/books" />
       )}
 
-      {/* Si sous-catégorie sélectionnée, on affiche les articles */}
       {subcategory && (
         <>
           {filtered.length === 0 ? (
             <p className="mt-6">Aucun contenu pour cette sous-catégorie.</p>
           ) : (
-            filtered.map(({ meta, content }, i) => (
-              <article key={i} className="books-article prose max-w-none my-8">
-                <h2>{meta.title}</h2>
-                <time className="block mb-4 text-sm text-gray-500">
-                  {meta.date}
-                </time>
-
-                {/* Affiche la couverture si présente */}
-                {meta.cover && (
-                  <img
-                    src={meta.cover}
-                    alt={meta.title}
-                    className="book-cover mb-4"
-                  />
-                )}
-
-                <ReactMarkdown components={{ a: LinkRenderer }}>
-                  {content}
-                </ReactMarkdown>
-              </article>
-            ))
+            <Slider {...settings}>
+              {filtered.map(({ meta, content }, i) => (
+                <div key={i} className="px-4">
+                  <article className="books-article prose max-w-none my-8">
+                    <h2>{meta.title}</h2>
+                    <time className="block mb-4 text-sm text-gray-500">
+                      {meta.date}
+                    </time>
+                    {meta.cover && (
+                      <img
+                        src={meta.cover}
+                        alt={meta.title}
+                        className="book-cover mb-4 w-full rounded-lg"
+                      />
+                    )}
+                    <ReactMarkdown components={{ a: LinkRenderer }}>
+                      {content}
+                    </ReactMarkdown>
+                  </article>
+                </div>
+              ))}
+            </Slider>
           )}
         </>
       )}

@@ -10,7 +10,8 @@ import ServicesPage from "./pages/ServicesPage";
 import GamesPage from "./pages/GamesPage";
 import PartnersPage from "./pages/PartnersPage";
 import ContactPage from "./pages/ContactPage";
-
+import "slick-carousel/slick/slick.css";
+import "slick-carousel/slick/slick-theme.css";
 export default function App() {
   return (
     <BrowserRouter>

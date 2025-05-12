@@ -1,46 +1,74 @@
 /* src/pages/BooksPage.css */
 
-/* Container et retour */
+/* Container général */
 .books-container {
   max-width: 768px;
   margin: 0 auto;
-  padding: 16px;
+  padding: 1rem;
 }
 
 /* Titre principal */
-.books-title {
+.books-container > h1 {
   font-size: 1.75rem;
   font-weight: bold;
-  margin-bottom: 16px;
+  margin-bottom: 1rem;
 }
 
 /* Article individuel */
 .books-article {
-  margin-bottom: 32px;
-  padding-bottom: 16px;
+  margin-bottom: 2rem;
+  padding-bottom: 1rem;
   border-bottom: 1px solid #e5e7eb;
 }
 
 .books-article h2 {
   font-size: 1.25rem;
-  margin-bottom: 4px;
+  margin-bottom: 0.25rem;
 }
 
 .books-article time {
   display: block;
   font-size: 0.75rem;
   color: #6b7280;
-  margin-bottom: 12px;
+  margin-bottom: 0.75rem;
 }
 
 .books-article p {
   line-height: 1.6;
-  margin-bottom: 8px;
+  margin-bottom: 0.5rem;
 }
+
+/* Couverture du livre */
 .book-cover {
   width: 100%;
   max-height: 300px;
   object-fit: cover;
-  border-radius: 8px;
+  border-radius: 0.5rem;
   margin: 1rem 0;
+}
+
+/* Carrousel : dots */
+.custom-dots {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  display: flex !important;
+  justify-content: center;
+  gap: 0.5rem;
+}
+
+.custom-dots li button {
+  width: 0.5rem;
+  height: 0.5rem;
+  padding: 0;
+  border: none;
+  background: #d1d5db; /* gray-300 */
+  border-radius: 50%;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+/* Quand le slide est actif, on cible le div à l’intérieur du bouton */
+.custom-dots li.slick-active div {
+  background-color: #5ce1e6; /* turquoise vif */
 }

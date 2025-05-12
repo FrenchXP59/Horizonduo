@@ -2,6 +2,8 @@
 import React, { useState, useEffect } from "react";
 import ReactMarkdown from "react-markdown";
 import { useParams } from "react-router-dom";
+import { Carousel } from "react-responsive-carousel";               // ← import carousel
+import "react-responsive-carousel/lib/styles/carousel.min.css";    // ← styles
 import BackButton from "../components/BackButton";
 import SubCategoryGrid from "../components/SubCategoryGrid";
 import "./NewsPage.css";
@@ -15,7 +17,6 @@ export default function NewsPage() {
     Promise.all(
       context.keys().map(async (key) => {
         const text = await fetch(context(key)).then((res) => res.text());
-        // Extraction front-matter
         const startIndex = text.indexOf("---");
         const cleanText = startIndex >= 0 ? text.slice(startIndex) : text;
         const match = cleanText.match(/^---\r?\n([\s\S]*?)\r?\n---/);
@@ -42,8 +43,8 @@ export default function NewsPage() {
 
   const subcategories = [
     { key: "bourse",  label: "Bourse & Marchés",  icon: "news-stock-analysis.webp" },
-    { key: "voyages", label: "Voyages & Récits", icon: "news-travel-stories.webp" },
-    { key: "ia",      label: "IA & Numérique",    icon: "news-ai-digital.webp" },
+    { key: "voyages", label: "Voyages & Récits",   icon: "news-travel-stories.webp" },
+    { key: "ia",      label: "IA & Numérique",     icon: "news-ai-digital.webp" },
   ];
 
   const filtered = subcategory
@@ -51,7 +52,7 @@ export default function NewsPage() {
     : articles;
 
   return (
-      <div className="news-container min-h-screen p-8 bg-actualites">
+    <div className="news-container min-h-screen p-8 bg-actualites">
       <BackButton />
       <h1 className="news-title">Actualités</h1>
 
@@ -63,20 +64,31 @@ export default function NewsPage() {
         filtered.length === 0 ? (
           <p>Aucun article pour cette sous-catégorie.</p>
         ) : (
-          filtered.map(({ meta, content }, i) => (
-            <article key={i} className="news-article">
-              <h2 className="news-article-title">{meta.title}</h2>
-              <time className="news-article-date">{meta.date}</time>
-              {meta.cover && (
-                <img
-                  src={meta.cover}
-                  alt={meta.title}
-                  className="news-article-cover"
-                />
-              )}
-              <ReactMarkdown>{content}</ReactMarkdown>
-            </article>
-          ))
+          <Carousel
+            showArrows
+            infiniteLoop
+            showThumbs={false}
+            showStatus={false}
+            autoPlay={false}
+            className="mt-6"
+          >
+            {filtered.map(({ meta, content }, i) => (
+              <div key={i} className="p-4">
+                <article className="news-article">
+                  <h2 className="news-article-title">{meta.title}</h2>
+                  <time className="news-article-date">{meta.date}</time>
+                  {meta.cover && (
+                    <img
+                      src={meta.cover}
+                      alt={meta.title}
+                      className="news-article-cover mb-4"
+                    />
+                  )}
+                  <ReactMarkdown>{content}</ReactMarkdown>
+                </article>
+              </div>
+            ))}
+          </Carousel>
         )
       )}
     </div>
