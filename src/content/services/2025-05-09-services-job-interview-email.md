@@ -3,7 +3,7 @@ title: "Coaching entretien – Échange par email"
 date: "2025-05-09"
 category: "services"
 subcategory: "job-interview-email"
-cover: "/assets/icon/services-job-interview-email.webp"
+icon: "/assets/articles/services-job-interview-email.webp"
 ---
 
 # ✉️ Coaching asynchrone – Accompagnement par email ou vocal

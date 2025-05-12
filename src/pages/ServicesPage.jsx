@@ -1,7 +1,7 @@
 // src/pages/ServicesPage.jsx
 import React, { useState, useEffect } from "react";
 import ReactMarkdown from "react-markdown";
-import { useParams, Link } from "react-router-dom";  // ← Import Link
+import { useParams, Link } from "react-router-dom";
 import BackButton from "../components/BackButton";
 import SubCategoryGrid from "../components/SubCategoryGrid";
 import "./ServicesPage.css";
@@ -37,21 +37,11 @@ export default function ServicesPage() {
   }, []);
 
   const subcategories = [
-    { key: "cv",
-      label: "Rédaction de CV",
-      icon: "services-cv.webp" },
-    { key: "dissertation",
-      label: "Aide à la rédaction de mémoires",
-      icon: "services-dissertation.webp" },
-    { key: "job-interview-visio",
-      label: "Coaching entretien (Visio)",
-      icon: "services-job-interview-visio.webp" },
-    { key: "job-interview-email",
-      label: "Coaching entretien (Email)",
-      icon: "services-job-interview-email.webp" },
-    { key: "custom-game",
-      label: "Création de jeux de piste",
-      icon: "services-custom-game.webp" },
+    { key: "cv", label: "Rédaction de CV", icon: "services-cv.webp" },
+    { key: "dissertation", label: "Aide à la rédaction de mémoires", icon: "services-dissertation.webp" },
+    { key: "job-interview-visio", label: "Coaching entretien (Visio)", icon: "services-job-interview-visio.webp" },
+    { key: "job-interview-email", label: "Coaching entretien (Email)", icon: "services-job-interview-email.webp" },
+    { key: "custom-game", label: "Création de jeux de piste", icon: "services-custom-game.webp" },
   ];
 
   const filtered = subcategory
@@ -63,12 +53,10 @@ export default function ServicesPage() {
       <BackButton />
       <h1 className="text-4xl mb-8">Mes Services</h1>
 
-      {/* Grille de sous-catégories */}
       {!subcategory && (
         <SubCategoryGrid categories={subcategories} basePath="/services" />
       )}
 
-      {/* Contenus de la sous-catégorie sélectionnée */}
       {subcategory && (
         <>
           {filtered.length === 0 ? (
@@ -80,9 +68,17 @@ export default function ServicesPage() {
                 <time className="block mb-4 text-sm text-gray-500">
                   {meta.date}
                 </time>
+
+                {meta.icon && (
+                  <img
+                    src={meta.icon}
+                    alt={meta.title}
+                    className="service-icon mb-4"
+                  />
+                )}
+
                 <ReactMarkdown>{content}</ReactMarkdown>
 
-                {/* Bouton “Demandez un devis gratuit” */}
                 <Link
                   to="/contact/form"
                   className="inline-block mt-6 bg-[#5ce1e6] text-gray-800 font-bold px-6 py-2 rounded-lg shadow hover:shadow-2xl transition"
@@ -90,7 +86,6 @@ export default function ServicesPage() {
                   Demandez un devis gratuit
                 </Link>
 
-                {/* Liens croisés entre les deux formules */}
                 {subcategory === "job-interview-visio" && (
                   <Link
                     to="/services/job-interview-email"

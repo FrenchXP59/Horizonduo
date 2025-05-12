@@ -26,4 +26,10 @@
 .services-article p {
   line-height: 1.6;
   margin-bottom: 8px;
+}.service-icon {
+  width: 100%;
+  max-height: 250px;
+  object-fit: cover;
+  margin: 1rem 0;
+  border-radius: 8px;
 }

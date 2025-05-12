@@ -3,7 +3,7 @@ title: "CV & Lettres de motivation"
 date: "2025-05-09"
 category: "services"
 subcategory: "cv"
-icon: "/assets/icons/services-cv.webp"
+icon: "/assets/articles/services-cv.webp"
 ---
 
 ### ✅ CV & Lettres de motivation  

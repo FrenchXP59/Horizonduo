@@ -4,7 +4,7 @@ description: "Un accompagnement sur mesure pour étudiants et professionnels : r
 date: "2025-05-09"
 category: "services"
 subcategory: "dissertation"
-icon: "/assets/icons/services-dissertation.webp"
+icon: "/assets/articles/services-dissertation.webp"
 ---
 
 ## 📌 Accompagnement à la rédaction de mémoire  

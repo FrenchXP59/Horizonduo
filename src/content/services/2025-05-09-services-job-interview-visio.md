@@ -3,7 +3,7 @@ title: "Coaching entretien – Visio"
 date: "2025-05-09"
 category: "services"
 subcategory: "job-interview-visio"
-cover: "/assets/icon/services-job-interview-visio.webp"
+icon: "/assets/articles/services-job-interview-visio.webp"
 ---
 
 # 🖥️ Coaching en visio – Préparation personnalisée
