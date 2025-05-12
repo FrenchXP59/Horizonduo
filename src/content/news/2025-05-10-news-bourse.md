@@ -3,7 +3,7 @@ title: "Marchés fébriles, arbitrages en vue"
 date: "2025-05-10"
 category: "news"
 subcategory: "bourse"
-cover: "/assets/articles/news-stock-analysis.webp"
+cover: "/assets/articles/news-stock-analysis1.webp"
 ---
 
 📊 **Les marchés se cherchent une direction claire**
