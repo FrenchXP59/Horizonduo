@@ -34,5 +34,5 @@ Un livre accessible aux **débutants**, utile pour les **investisseurs confirmé
 📈 *Rédigé par Frédéric & Victor Legrand, dans la continuité du guide “Votre Premier Portefeuille”*
 
 ---
-
-🔗 **[📖 Acheter sur Amazon (version brochée)](https://www.amazon.fr/dp/B0DR2S7GG6)**
+### 🔗 **📖 Disponible sur Amazon Kindle**  
+➡️ [**Cliquez ici pour consulter ou acheter sur Amazon**](https://www.amazon.fr/dp/B0DR2S7GG6)

@@ -33,4 +33,5 @@ Un carnet aux couleurs du Sud, entre marché provençal, sculptures, mer et vél
 
 ---
 
-🔗 **[📖 Disponible sur Amazon – Broché (6,32 €)](https://www.amazon.fr/dp/B0F63K5MWZ)**
+### 🔗 **📖 Disponible sur Amazon – Broché (6,32 €)**  
+➡️ [**Cliquez ici pour consulter ou acheter sur Amazon**](https://www.amazon.fr/dp/B0F63K5MWZ)

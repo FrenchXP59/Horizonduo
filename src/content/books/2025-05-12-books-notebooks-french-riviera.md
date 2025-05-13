@@ -31,5 +31,5 @@ Plongez dans l’ambiance festive et élégante de Juan-les-Pins avec ce carnet 
 - S’évader en mode dolce vita
 
 ---
-
-🔗 **[📖 Disponible sur Amazon – Broché (6,32 €)](https://www.amazon.fr/dp/B0F66V64JG)**
+### 🔗 **📖 Disponible sur Amazon – Broché (6,32 €)**  
+➡️ [**Cliquez ici pour consulter ou acheter sur Amazon**](https://www.amazon.fr/dp/B0F66V64JG)

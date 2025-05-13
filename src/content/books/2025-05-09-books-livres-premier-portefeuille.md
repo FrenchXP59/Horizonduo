@@ -32,4 +32,5 @@ Vous n’avez pas besoin d’être expert : ce guide s’adresse à tous ceux qu
 
 ---
 
-🔗 **[📖 Acheter sur Amazon (version brochée)](https://www.amazon.fr/dp/B0DNKH8BTC)**
+### 🔗 **📖 Disponible sur Amazon Kindle**  
+➡️ [**Cliquez ici pour consulter ou acheter sur Amazon**](https://www.amazon.fr/dp/B0DNKH8BTC)

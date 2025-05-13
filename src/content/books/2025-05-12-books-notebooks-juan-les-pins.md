@@ -33,4 +33,5 @@ Un format pratique pour écrire, s’évader ou faire un joli cadeau. Ambiance b
 
 ---
 
-🔗 **[📖 Disponible sur Amazon – Broché (6,32 €)](https://www.amazon.fr/dp/B0F6CKF9J2)**
+### 🔗 **📖 Disponible sur Amazon – Broché (6,32 €)**  
+➡️ [**Cliquez ici pour consulter ou acheter sur Amazon**](https://www.amazon.fr/dp/B0F6CKF9J2)

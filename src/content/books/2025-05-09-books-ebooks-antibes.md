@@ -22,7 +22,9 @@ Vous aimez marcher, pédaler, apprendre et explorer autrement ? Ce guide est pou
 
 ---
 
-🔗 **[📖 Lire sur Amazon (version Kindle)](https://www.amazon.fr/dp/B0F7C665Z4)**
+### 🔗 **📖 Disponible sur Amazon Kindle**  
+➡️ [**Cliquez ici pour consulter ou acheter sur Amazon**](https://www.amazon.fr/dp/B0F7C665Z4))
+
 
 ---
 
