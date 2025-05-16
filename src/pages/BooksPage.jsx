@@ -1,14 +1,15 @@
 // src/pages/BooksPage.jsx
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import ReactMarkdown from "react-markdown";
 import { useParams } from "react-router-dom";
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 
+import { Helmet } from "react-helmet-async";               // ← Import
 import BackButton from "../components/BackButton";
 import SubCategoryGrid from "../components/SubCategoryGrid";
-import SwipeWrapper from "../components/SwipeWrapper"; // ← wrapper unique
+import SwipeWrapper from "../components/SwipeWrapper";
 import "./BooksPage.css";
 
 // Rend les liens Markdown : seuls ceux vers Amazon s’ouvrent en new-tab
@@ -28,6 +29,7 @@ export default function BooksPage() {
   const [items, setItems] = useState([]);
   const { subcategory } = useParams();
 
+  // Chargement des .md...
   useEffect(() => {
     const ctx = require.context("../content/books", false, /\.md$/);
     Promise.all(
@@ -71,7 +73,7 @@ export default function BooksPage() {
     speed: 500,
     slidesToShow: 1,
     slidesToScroll: 1,
-    touchThreshold: 80, // ← tolérance au swipe horizontal
+    touchThreshold: 80,
     appendDots: (dots) => (
       <div>
         <ul className="custom-dots flex gap-2 justify-center mt-4">{dots}</ul>
@@ -80,8 +82,30 @@ export default function BooksPage() {
     customPaging: () => <div className="w-2 h-2 rounded-full bg-gray-300"></div>,
   };
 
+  // Métadonnées SEO / OG dynamiques selon la sous-catégorie
+  const pageTitle = subcategory
+    ? subcategories.find((c) => c.key === subcategory)?.label
+    : "Livres & Carnets";
+  const pageDescription = subcategory
+    ? `Découvrez nos ${pageTitle.toLowerCase()} sur Horizon Duo.`
+    : "Parcourez nos ebooks, carnets et publications papier.";
+
   return (
     <div className="books-container min-h-screen p-8 bg-livres">
+      {/* 1️⃣ Helmet pour SEO / OG */}
+      <Helmet>
+        <title>{pageTitle} – Horizon Duo</title>
+        <meta name="description" content={pageDescription} />
+        <meta property="og:title" content={`${pageTitle} – Horizon Duo`} />
+        <meta property="og:description" content={pageDescription} />
+        <meta
+          property="og:image"
+          content="https://horizonduo.net/assets/og-image-horizondouo.webp"
+        />
+        <meta property="og:type" content="website" />
+        <meta property="og:url" content={`https://horizonduo.net/books/${subcategory || ""}`} />
+      </Helmet>
+
       <BackButton />
       <h1 className="text-4xl mb-8">Livres &amp; Carnets</h1>
 

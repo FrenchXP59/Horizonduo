@@ -59,7 +59,7 @@ export default function NewsPage() {
     speed: 500,
     slidesToShow: 1,
     slidesToScroll: 1,
-    touchThreshold: 100,              // ← on augmente la tolérance au swipe
+    touchThreshold: 100, // ← tolérance au swipe horizontal accrue
     appendDots: (dots) => (
       <div>
         <ul className="custom-dots flex gap-2 justify-center mt-4">{dots}</ul>
