@@ -2,9 +2,11 @@
   "name": "Horizon Duo",
   "short_name": "HorizonDuo",
   "start_url": ".",
+  "scope": "/",
   "display": "standalone",
   "background_color": "#ffffff",
   "theme_color": "#0d9488",
+  "description": "Horizon Duo – Livres, jeux et services créatifs à découvrir sur mobile",
   "icons": [
     {
       "src": "web-app-manifest-192x192.png",
