@@ -1,12 +1,12 @@
 // src/pages/BooksPage.jsx
-import React, { useState, useEffect, useRef } from "react";
+import React, { useState, useEffect } from "react";
 import ReactMarkdown from "react-markdown";
 import { useParams } from "react-router-dom";
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 
-import { Helmet } from "react-helmet-async";               // ← Import
+import { Helmet } from "react-helmet-async";  // ← Import pour SEO/OG
 import BackButton from "../components/BackButton";
 import SubCategoryGrid from "../components/SubCategoryGrid";
 import SwipeWrapper from "../components/SwipeWrapper";
@@ -29,7 +29,7 @@ export default function BooksPage() {
   const [items, setItems] = useState([]);
   const { subcategory } = useParams();
 
-  // Chargement des .md...
+  // Chargement des fichiers Markdown
   useEffect(() => {
     const ctx = require.context("../content/books", false, /\.md$/);
     Promise.all(
@@ -43,7 +43,9 @@ export default function BooksPage() {
           match[1].split(/\r?\n/).forEach((line) => {
             const [k, ...v] = line.split(":");
             let val = v.join(":").trim();
-            if (val.startsWith('"') && val.endsWith('"')) val = val.slice(1, -1);
+            if (val.startsWith('"') && val.endsWith('"')) {
+              val = val.slice(1, -1);
+            }
             meta[k.trim()] = val;
           });
           md = clean.slice(match[0].length).trim();
@@ -67,13 +69,14 @@ export default function BooksPage() {
     ? items.filter(({ meta }) => meta.subcategory === subcategory)
     : [];
 
+  // Configuration du slider
   const settings = {
     dots: true,
     infinite: false,
     speed: 500,
     slidesToShow: 1,
     slidesToScroll: 1,
-    touchThreshold: 80,
+    touchThreshold: 80, // tolérance accrue
     appendDots: (dots) => (
       <div>
         <ul className="custom-dots flex gap-2 justify-center mt-4">{dots}</ul>
@@ -82,7 +85,7 @@ export default function BooksPage() {
     customPaging: () => <div className="w-2 h-2 rounded-full bg-gray-300"></div>,
   };
 
-  // Métadonnées SEO / OG dynamiques selon la sous-catégorie
+  // SEO / Open Graph dynamiques
   const pageTitle = subcategory
     ? subcategories.find((c) => c.key === subcategory)?.label
     : "Livres & Carnets";
@@ -92,7 +95,7 @@ export default function BooksPage() {
 
   return (
     <div className="books-container min-h-screen p-8 bg-livres">
-      {/* 1️⃣ Helmet pour SEO / OG */}
+      {/* Helmet pour SEO / OG */}
       <Helmet>
         <title>{pageTitle} – Horizon Duo</title>
         <meta name="description" content={pageDescription} />
@@ -103,16 +106,28 @@ export default function BooksPage() {
           content="https://horizonduo.net/assets/og-image-horizondouo.webp"
         />
         <meta property="og:type" content="website" />
-        <meta property="og:url" content={`https://horizonduo.net/books/${subcategory || ""}`} />
+        <meta
+          property="og:url"
+          content={`https://horizonduo.net/books/${subcategory || ""}`}
+        />
       </Helmet>
 
       <BackButton />
       <h1 className="text-4xl mb-8">Livres &amp; Carnets</h1>
 
+      {/* Grille si pas de sous-catégorie */}
       {!subcategory && (
         <SubCategoryGrid categories={subcategories} basePath="/books" />
       )}
 
+      {/* Swipe hint (mobile) */}
+      {subcategory && filtered.length > 0 && (
+        <p className="mt-4 text-center text-sm text-gray-500 italic block md:hidden">
+          Faites glisser ◀️▶️ pour voir le suivant.
+        </p>
+      )}
+
+      {/* Carrousel */}
       {subcategory && (
         filtered.length === 0 ? (
           <p className="mt-6">Aucun contenu pour cette sous-catégorie.</p>
