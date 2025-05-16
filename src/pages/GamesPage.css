@@ -27,4 +27,17 @@
 .games-article p {
   line-height: 1.6;
   margin-bottom: 8px;
+}/* Astuce Mobile sous la grille */
+.mobile-hint {
+  max-width: 768px;
+  margin: 0 auto;
+}
+@media (max-width: 640px) {
+  .mobile-hint {
+    flex-direction: column;
+    text-align: center;
+  }
+  .mobile-hint img {
+    margin: 0 auto 1rem;
+  }
 }
